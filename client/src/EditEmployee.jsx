@@ -26,7 +26,7 @@ function EditEmployee() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:8081/api/v1/get/${id}`)
+      .get(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/get/${id}`)
       .then((res) => {
         setData({ ...data, ...res.data.Result });
       })
@@ -36,7 +36,7 @@ function EditEmployee() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`http://localhost:8081/api/v1/update/${id}`, data)
+      .put(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/update/${id}`, data)
       .then((res) => {
         console.log(res);
         if (res.data.Status === 'Success') {

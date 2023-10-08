@@ -7,7 +7,7 @@ function Dashboard() {
 	const navigate = useNavigate()
 	axios.defaults.withCredentials = true;
 	useEffect(()=>{
-		axios.get('http://localhost:8081/api/v1/dashboard')
+		axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/dashboard')
 		.then(res => {
 			if(res.data.Status === "Success") {
 				console.log(res.data)
@@ -24,7 +24,7 @@ function Dashboard() {
 	}, [])
 
 	const handleLogout = () => {
-		axios.get('http://localhost:8081/api/v1/logout')
+		axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/logout')
 		.then(res => {
 			navigate('/start')
 		}).catch(err => console.log(err));

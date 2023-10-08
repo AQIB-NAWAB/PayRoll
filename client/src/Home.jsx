@@ -20,21 +20,21 @@ function Home() {
     ],
   };
   useEffect(() => {
-    axios.get('http://localhost:8081/api/v1/adminCount')
+    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/adminCount')
 		.then(res => {
 			setAdminCount(res.data.admin)
 		}).catch(err => console.log(err));
 
-    axios.get('http://localhost:8081/api/v1/employeeCount')
+    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/employeeCount')
 		.then(res => {
 			setEmployeeCount(res.data.employee)
 		}).catch(err => console.log(err));
 
-    axios.get('http://localhost:8081/api/v1/salary')
+    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/salary')
 		.then(res => {
 			setSalary(res.data.sumOfSalary)
 		}).catch(err => console.log(err));
-axios.get('http://localhost:8081/api/v1/getAdmins').then(res=>{
+axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/getAdmins').then(res=>{
   setAdmins(res.data.Result)
 }).catch(err => console.log(err));
   } , [])

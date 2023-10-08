@@ -17,7 +17,7 @@ function EmployeeLogin() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8081/api/v1/employeelogin', values)
+        axios.post('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/employeelogin', values)
         .then(res => {
             if(res.data.Status === 'Success') {
                 const id = res.data.id;

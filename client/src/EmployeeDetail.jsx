@@ -12,10 +12,10 @@ function EmployeeDetail() {
   const [attendanceDataFetched, setAttendanceDataFetched] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://localhost:8081/api/v1/get/${id}`)
+    axios.get(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/get/${id}`)
       .then(res => {
         setEmployee(res.data.Result);
-        axios.get(`http://localhost:8081/api/v1/attendace?id=${res.data.Result._id}`)
+        axios.get(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/attendace?id=${res.data.Result._id}`)
           .then(res => {
             setAttendances(res.data.attenadnce);
             setAttendanceDataFetched(true); // Mark attendance data as fetched
@@ -27,7 +27,7 @@ function EmployeeDetail() {
   }, [id]);
 
   const handleLogout = () => {
-    axios.get('http://localhost:8081/api/v1/logout')
+    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/logout')
       .then(res => {
         navigate('/start');
       })

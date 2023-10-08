@@ -14,7 +14,7 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://localhost:8081/api/v1/login', values)
+        axios.post('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/login', values)
         .then(res => {
             if(res.data.Status === 'Success') {
                 navigate('/');
