@@ -42,7 +42,7 @@ function AddEmployee() {
     formData.append('welfareFund', data.welfareFund);
 
     axios
-      .post('http://localhost:8081/api/v1/create', formData)
+      .post('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/create', formData)
       .then((res) => {
         navigate('/employee');
       })
