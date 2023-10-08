@@ -70,8 +70,8 @@ axios.get('http://localhost:8081/api/v1/getAdmins').then(res=>{
         </div>
       </div>
 
-      <div className="doughnutChart w-100   py-5 ">
-        <Doughnut data={doughnutState} className='m-auto' />
+      <div className="doughnutChart   d-flex  py-5 my-3 " >
+        <Doughnut data={doughnutState} className='mx-auto'  />
       </div>
 
     </div>

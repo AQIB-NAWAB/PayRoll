@@ -11,7 +11,7 @@ function Employee() {
       if(res.data.Status === "Success") {
         setData(res.data.Result);
       } else {
-        alert("Error")
+        alert("Gett")
       }
     })
     .catch(err => console.log(err));
@@ -49,7 +49,7 @@ function Employee() {
             </tr>
           </thead>
           <tbody>
-            {data.map((employee, index) => {
+            {data && data?.map((employee, index) => {
               return <tr key={index}>
 <td>{employee._id}</td>
                   <td>{employee.name}</td>

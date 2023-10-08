@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import  { useEffect } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios'
@@ -17,15 +17,13 @@ function Dashboard() {
 					const id = res.data.id;
 					navigate('/employeedetail/'+id)
 				}
-			} else {
-				navigate('/start')
 			}
 		})
 	}, [])
 
 	const handleLogout = () => {
 		axios.get('http://localhost:8081/api/v1/logout')
-		.then(res => {
+		.then(() => {
 			navigate('/start')
 		}).catch(err => console.log(err));
 	}
@@ -54,7 +52,7 @@ function Dashboard() {
 								<Link to="/history" className="nav-link px-0 align-middle text-white">
 									<i className="fs-4 bi-tools"></i> <span className="ms-1 d-none d-sm-inline">History</span></Link>
 							</li>
-							<li onClick={handleLogout}>
+							<li onClick={()=>handleLogout()}>
 								<a href="#" className="nav-link px-0 align-middle text-white">
 									<i className="fs-4 bi-power"></i> <span className="ms-1 d-none d-sm-inline">Logout</span></a>
 							</li>
@@ -62,8 +60,8 @@ function Dashboard() {
 					</div>
 				</div>
 				<div className="col p-0 m-0">
-					<div className='p-2 d-flex justify-content-center shadow'>
-						<h4>Employee Management System</h4>						
+					<div className='p-2 py-3  d-flex justify-content-center shadow'>
+						<h4 className='text-shadow-sm'> Employee Management System</h4>						
 					</div>
 					<Outlet />
 				</div>
