@@ -54,7 +54,7 @@ function Employee() {
 <td>{employee._id}</td>
                   <td>{employee.name}</td>
                   <td>{
-                    <img src={`http://localhost:8081/images/`+employee.image} alt="" className='employee_image'/>
+                    <img src={`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/images/${employee?.image}`} alt="yser" className='employee_image'/>
                     }</td>
                   <td>{employee.email}</td>
                   <td>{employee.designation}</td>

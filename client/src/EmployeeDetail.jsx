@@ -64,7 +64,7 @@ function EmployeeDetail() {
 
         <div className="d-flex  align-items-center my-5" style={{gap:"100px"}}> 
         <img
-            src={`http://localhost:8081/images/${employee?.image}`}
+            src={`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/images/${employee?.image}`}
             alt="Employee"
             className='empImg'
             style={{ width: "200px", height: "200px", objectFit: "cover", borderRadius: "50%" }}
