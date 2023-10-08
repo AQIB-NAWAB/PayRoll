@@ -14,14 +14,7 @@ app.use(cookieParser());
 app.use(express.json());
 
 app.use(express.static(path.join(__dirname, "../client/dist")));
-app.get("*", function (_, res) {
-  res.sendFile(
-    path.join(__dirname, "../client/dist/index.html"),
-    function (err) {
-      res.status(500).send(err);
-    }
-  );
-});
+
 
 mongoose.connect("mongodb+srv://aqib:aqib@form.yj6lgkp.mongodb.net/", {
 
@@ -39,6 +32,15 @@ mongoose.connect("mongodb+srv://aqib:aqib@form.yj6lgkp.mongodb.net/", {
 
 const routes=require("./Routes/routes")
 app.use("/api/v1",routes)
+
+app.get("*", function (_, res) {
+    res.sendFile(
+      path.join(__dirname, "../client/dist/index.html"),
+      function (err) {
+        res.status(500).send(err);
+      }
+    );
+  });
 
 app.listen(8081, () => {
     console.log("Running");

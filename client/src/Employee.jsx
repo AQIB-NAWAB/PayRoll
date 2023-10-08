@@ -11,7 +11,7 @@ function Employee() {
       if(res.data.Status === "Success") {
         setData(res.data.Result);
       } else {
-        alert("Gett")
+        alert("Error")
       }
     })
     .catch(err => console.log(err));
