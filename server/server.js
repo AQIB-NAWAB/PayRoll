@@ -6,7 +6,7 @@ const path=require("path")
 const  mongoose =require ('mongoose');
 const app = express();
 app.use(cors({
-    origin: ["http://localhost:8081"],
+    origin: ["http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }));
