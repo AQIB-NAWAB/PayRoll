@@ -97,7 +97,7 @@ function EmployeeDetail() {
       </div>
 
         </div>
-      <button className='btn btn-danger' style={{position:"absolute",top:"30px",right:"30px"}} onClick={()=>handleLogout}>Logout</button>
+      <button className='btn btn-danger' style={{position:"absolute",top:"30px",right:"30px"}} onClick={()=>handleLogout()}>Logout</button>
 <button className='btn btn-primary' onClick={downloadPDF}>Download PDF</button>
       <div className='table-responsive mt-4'>
         <h2>Attendance History</h2>
