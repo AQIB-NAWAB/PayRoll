@@ -12,7 +12,7 @@ const Attendance = () => {
         e.preventDefault();
  
         axios
-        .post(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com//api/v1/attendance`, {employeeId,date,status})
+        .post(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/attendance`, {employeeId,date,status})
         .then((res) => {
             if(res.data.Status=="Error"){
                 return setError(res.data.Error)
