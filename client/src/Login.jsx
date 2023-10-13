@@ -3,6 +3,7 @@ import './style.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify';
+import { baseUrl } from './baseUrl';
 function Login() {
 
     const [values, setValues] = useState({
@@ -14,7 +15,7 @@ function Login() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/login', values)
+        axios.post(`${baseUrl}/login`, values)
         .then(res => {
             if(res.data.Status === 'Success') {
                 navigate('/');

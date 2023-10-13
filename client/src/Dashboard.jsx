@@ -2,12 +2,13 @@ import React, { useEffect } from 'react'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import { baseUrl } from './baseUrl';
 
 function Dashboard() {
 	const navigate = useNavigate()
 	axios.defaults.withCredentials = true;
 	useEffect(()=>{
-		axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/dashboard')
+		axios.get(`${baseUrl}/dashboard`)
 		.then(res => {
 			if(res.data.Status === "Success") {
 				console.log(res.data)
@@ -24,7 +25,7 @@ function Dashboard() {
 	}, [])
 
 	const handleLogout = () => {
-		axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/logout')
+		axios.get(`${baseUrl}/logout`)
 		.then(res => {
 			navigate('/start')
 		}).catch(err => console.log(err));

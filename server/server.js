@@ -8,7 +8,7 @@ const app = express();
 app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 app.use(cors({
-    origin: ["http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/"],
+    origin: ["http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/,http://20.204.2.34/"],
     methods: ["POST", "GET", "PUT", "DELETE"],
     credentials: true
 }));

@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
+import { baseUrl } from './baseUrl';
 function EmployeeDetail() {
     const pdfRef=useRef()
   const { id } = useParams();
@@ -12,10 +13,10 @@ function EmployeeDetail() {
   const [attendanceDataFetched, setAttendanceDataFetched] = useState(false);
 
   useEffect(() => {
-    axios.get(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/get/${id}`)
+    axios.get(`${baseUrl}/get/${id}`)
       .then(res => {
         setEmployee(res.data.Result);
-        axios.get(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/attendace?id=${res.data.Result._id}`)
+        axios.get(`${baseUrl}/attendace?id=${res.data.Result._id}`)
           .then(res => {
             setAttendances(res.data.attenadnce);
             setAttendanceDataFetched(true); // Mark attendance data as fetched
@@ -27,7 +28,7 @@ function EmployeeDetail() {
   }, [id]);
 
   const handleLogout = () => {
-    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/logout')
+    axios.get(`${baseUrl}/logout`)
       .then(res => {
         navigate('/start');
       })

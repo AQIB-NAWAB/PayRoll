@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Doughnut } from 'react-chartjs-2';
 import { ArcElement} from 'chart.js'
 import Chart from 'chart.js/auto';
+import { baseUrl } from './baseUrl';
 Chart.register(ArcElement);
 function Home() {
   const [adminCount, setAdminCount] = useState()
@@ -20,21 +21,21 @@ function Home() {
     ],
   };
   useEffect(() => {
-    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/adminCount')
+    axios.get(`${baseUrl}/adminCount`)
 		.then(res => {
 			setAdminCount(res.data.admin)
 		}).catch(err => console.log(err));
 
-    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/employeeCount')
+    axios.get(`${baseUrl}/employeeCount`)
 		.then(res => {
 			setEmployeeCount(res.data.employee)
 		}).catch(err => console.log(err));
 
-    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/salary')
+    axios.get(`${baseUrl}/salary`)
 		.then(res => {
 			setSalary(res.data.sumOfSalary)
 		}).catch(err => console.log(err));
-axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/getAdmins').then(res=>{
+axios.get(`${baseUrl}/getAdmins`).then(res=>{
   setAdmins(res.data.Result)
 }).catch(err => console.log(err));
   } , [])

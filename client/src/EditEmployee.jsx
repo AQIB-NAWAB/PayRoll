@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { baseUrl } from './baseUrl';
 
 function EditEmployee() {
   const [data, setData] = useState({
@@ -26,7 +27,7 @@ function EditEmployee() {
 
   useEffect(() => {
     axios
-      .get(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/get/${id}`)
+      .get(`${baseUrl}/get/${id}`)
       .then((res) => {
         setData({ ...data, ...res.data.Result });
       })
@@ -36,7 +37,7 @@ function EditEmployee() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .put(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/update/${id}`, data)
+      .put(`${baseUrl}/update/${id}`, data)
       .then((res) => {
         console.log(res);
         if (res.data.Status === 'Success') {

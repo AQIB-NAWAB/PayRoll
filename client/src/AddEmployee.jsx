@@ -1,3 +1,4 @@
+import { baseUrl } from './baseUrl';
 import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -21,7 +22,6 @@ function AddEmployee() {
     welfareFund: ''
   });
   const navigate = useNavigate();
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData();
@@ -42,7 +42,7 @@ function AddEmployee() {
     formData.append('welfareFund', data.welfareFund);
 
     axios
-      .post('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/create', formData)
+      .post(`${baseUrl}/create`, formData)
       .then((res) => {
         navigate('/employee');
       })

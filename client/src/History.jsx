@@ -1,10 +1,11 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
+import { baseUrl } from './baseUrl'
 
 const History = () => {
     const [attendances,setAttendances]=useState([])
     useEffect(()=>{
-        axios.get("http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/attendances").then(res=>{
+        axios.get(`${baseUrl}/attendances`).then(res=>{
             setAttendances(res.data.attendances)
         })
     },[])

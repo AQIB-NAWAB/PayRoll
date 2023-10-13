@@ -3,6 +3,7 @@ import './style.css'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer,toast } from 'react-toastify'
+import { baseUrl } from './baseUrl'
 
 function EmployeeLogin() {
 
@@ -17,7 +18,7 @@ function EmployeeLogin() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/employeelogin', values)
+        axios.post(`${baseUrl}/employeelogin`, values)
         .then(res => {
             if(res.data.Status === 'Success') {
                 const id = res.data.id;

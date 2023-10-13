@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { baseUrl } from './baseUrl';
 
 const Attendance = () => {
     const navigate=useNavigate()
@@ -12,7 +13,7 @@ const Attendance = () => {
         e.preventDefault();
  
         axios
-        .post(`http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/attendance`, {employeeId,date,status})
+        .post(`${baseUrl}/attendance`, {employeeId,date,status})
         .then((res) => {
             if(res.data.Status=="Error"){
                 return setError(res.data.Error)

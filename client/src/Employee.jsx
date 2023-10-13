@@ -2,11 +2,13 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import millify from "millify";
+import { baseUrl } from './baseUrl';
+
 function Employee() {
   const [data, setData] = useState([])
 
   useEffect(()=> {
-    axios.get('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/getEmployee')
+    axios.get(`${baseUrl}/getEmployee`)
     .then(res => {
       if(res.data.Status === "Success") {
         setData(res.data.Result);
@@ -18,7 +20,7 @@ function Employee() {
   }, [])
 
   const handleDelete = (id) => {
-    axios.delete('http://ec2-3-109-108-17.ap-south-1.compute.amazonaws.com/api/v1/delete/'+id)
+    axios.delete(`${baseUrl}/delete/`+id)
     .then(res => {
       if(res.data.Status === "Success") {
         window.location.reload(true);
