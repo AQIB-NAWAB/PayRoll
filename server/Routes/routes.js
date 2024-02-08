@@ -68,7 +68,16 @@ router.route("/employeelogin").post(async (req, res) => {
             return res.json({ Status: "Error", Error: "Wrong Email or Password" });
         }
         const token = jwt.sign({ role: "employee", id: employee._id }, "jwt-secret-key", { expiresIn: '1d' });
-        res.cookie('token', token);
+        res.cookie('token', token,
+                   {
+    expires: new Date(
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+    secure:true,
+    sameSite:"none"
+  };
+                  );
         return res.json({ Status: "Success", id: employee._id });
     } catch (err) {
         return res.json({ Status: "Error", Error: "Error in running query" });
