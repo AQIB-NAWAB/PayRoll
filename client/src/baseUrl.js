@@ -1,1 +1,1 @@
-export const baseUrl="http://20.204.2.34/api/v1"
+export const baseUrl="https://pay-roll-managment-backend.vercel.app/api/v1"
