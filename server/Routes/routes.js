@@ -204,7 +204,16 @@ router.route('/login').post( async (req, res) => {
        if(req.body.email=="admin@gmail.com" && req.body.password=="adminpassword"){
 
            const token = jwt.sign({ email: req.body.email }, "jwt-secret-key", { expiresIn: '1d' });
-           res.cookie('token', token);
+           res.cookie('token', token,
+                      {
+    expires: new Date(
+      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+    ),
+    httpOnly: true,
+    secure:true,
+    sameSite:"none"
+  };
+                     );
            return res.json({ Status: "Success" });
         }else{
             return res.json({Status:"Error",Error:"Invalid Email or Password"})
