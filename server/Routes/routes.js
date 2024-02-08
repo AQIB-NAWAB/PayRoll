@@ -71,14 +71,14 @@ router.route("/employeelogin").post(async (req, res) => {
 
 const options = {
     expires: new Date(
-      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+      Date.now() + 2 * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
     secure:true,
     sameSite:"none"
   };
 
-  res.status(statusCode).cookie("token", token, options).json({
+  res.status(200).cookie("token", token, options).json({
     success: true,
     token,
     Status:"Success",
@@ -224,14 +224,14 @@ router.route('/login').post( async (req, res) => {
        // options for cookie setting in vercel 
   const options = {
     expires: new Date(
-      Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
+      Date.now() + 3 * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
     secure:true,
     sameSite:"none"
   };
 
-  res.status(statusCode).cookie("token", token, options).json({
+  res.status(200).cookie("token", token, options).json({
     success: true,
     token,
     Status:"Success",
