@@ -68,8 +68,8 @@ router.route("/employeelogin").post(async (req, res) => {
             return res.json({ Status: "Error", Error: "Wrong Email or Password" });
         }
         const token = jwt.sign({ role: "employee", id: employee._id }, "jwt-secret-key", { expiresIn: '1d' });
-        res.cookie('token', token,
-                   {
+
+const options = {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
@@ -77,8 +77,16 @@ router.route("/employeelogin").post(async (req, res) => {
     secure:true,
     sameSite:"none"
   };
-                  );
-        return res.json({ Status: "Success", id: employee._id });
+
+  res.status(statusCode).cookie("token", token, options).json({
+    success: true,
+    token,
+    Status:"Success",
+      id: employee._id
+  });
+
+        
+
     } catch (err) {
         return res.json({ Status: "Error", Error: "Error in running query" });
     }
@@ -213,8 +221,8 @@ router.route('/login').post( async (req, res) => {
        if(req.body.email=="admin@gmail.com" && req.body.password=="adminpassword"){
 
            const token = jwt.sign({ email: req.body.email }, "jwt-secret-key", { expiresIn: '1d' });
-           res.cookie('token', token,
-                      {
+       // options for cookie setting in vercel 
+  const options = {
     expires: new Date(
       Date.now() + process.env.COOKIE_EXPIRE * 24 * 60 * 60 * 1000
     ),
@@ -222,8 +230,12 @@ router.route('/login').post( async (req, res) => {
     secure:true,
     sameSite:"none"
   };
-                     );
-           return res.json({ Status: "Success" });
+
+  res.status(statusCode).cookie("token", token, options).json({
+    success: true,
+    token,
+    Status:"Success",
+  });
         }else{
             return res.json({Status:"Error",Error:"Invalid Email or Password"})
         }
